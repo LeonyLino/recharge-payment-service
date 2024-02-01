@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: recharge-payment
+  cloud:
+    config:
+      name: recharge-payment
+---
+spring:
+  application:
+    name: recharge-payment
+  config:
+    activate:
+      on-profile: dev
+    import: optional:configserver:http://localhost:8080/
+  cloud:
+    config:
+      name: recharge-payment,global-rabbitmq
+      username: mirante
+      password: mirante@123
